@@ -48,8 +48,8 @@ jobs:
     - name: Run migrations
       run: |
       	cd /home/runner/work/tereverde/tereverde/ 
-        source faculdade/bin/activate
-        python manage.py migrate
+    	source faculdade/bin/activate
+    	python manage.py migrate
 
     - name: Run tests
       run: |
