@@ -17,8 +17,6 @@ class Parque(models.Model):
         ('Sábado', 'Sábado'),
         ('Domingo', 'Domingo'),
         ])
-    horario_abertura = models.TimeField()
-    horario_fechamento = models.TimeField()
     ativo = models.BooleanField(default=True)
     def __str__(self):
         return self.nome
