@@ -1,0 +1,6 @@
+Django
+djongo
+djangorestframework
+pytest
+
+
