@@ -12,7 +12,7 @@ jobs:
 
     services:
       mongodb:
-        image: mongo:latest
+        image: mongo:5
         ports:
           - 27017:27017
         options: >-
@@ -33,8 +33,16 @@ jobs:
     - name: Install dependencies
       run: |
         python -m venv faculdade
+        pip install --upgrade pip
         source faculdade/bin/activate
         pip install -r requirements.txt
+    - name: Wait for MongoDB to be ready
+      run: |
+        for i in {1..15}; do
+          nc -z localhost 27017 && echo "MongoDB is up!" && break
+          echo "Waiting for MongoDB..."
+          sleep 3
+        done        
 
     - name: Run migrations
       run: |
