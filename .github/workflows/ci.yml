@@ -36,6 +36,7 @@ jobs:
         pip install --upgrade pip
         source faculdade/bin/activate
         pip install -r requirements.txt
+        
     - name: Wait for MongoDB to be ready
       run: |
         for i in {1..15}; do
