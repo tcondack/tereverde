@@ -1,0 +1,29 @@
+{% extends 'myapp/index.html' %}
+{% load static %}
+
+{% block title %}Parques - Circuito Terê Verde{% endblock %}
+
+{% block content %}
+    <section class="welcome container">
+        <h2>Bem-vindo ao ecoturismo de Teresópolis</h2>
+        <p>Explore trilhas, descubra a biodiversidade e participe de eventos nos parques da região.</p>
+    </section>
+
+    <section class="parques-container container">
+        <h1>Parques do Circuito Terê Verde</h1>
+        <div class="cards-grid">
+            {% for parque in parques %}
+            <a href="{% url 'parques' %}"> <class="park-card">
+                {% if parque.imagem %}
+                    <img src="{{ parque.imagem.url }}" alt="Imagem do parque {{ parque.nome }}">
+                {% endif %}
+                <h4>{{ parque.nome }}</h4>
+                <p>{{ parque.descricao }}</p>
+                <p><strong>Localização:</strong> {{ parque.localizacao }}</p>
+            </article>
+            {% empty %}
+            <p>Nenhum parque cadastrado ainda.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

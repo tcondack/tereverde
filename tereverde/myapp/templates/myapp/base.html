@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bloco para o título específico da página -->
+    <title>{% block title %}Circuito Terê Verde{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script src="{% static 'index.js' %}" type="text/javascript"></script>
+</head>
+<body>
+    <header class="hero">
+        <div class="overlay"></div>
+        <h1><a href="{% url 'index' %}">CIRCUITO TERÊ VERDE</a></h1>
+        <nav aria-label="Menu principal">
+            <a href="{% url 'parques' %}">Parques</a>
+            <a href="{% url 'trilhas' %}">Trilhas</a>
+            <a href="{% url 'eventos' %}">Eventos</a>
+            <!-- Links de Autenticação, se necessário -->
+            <a href="{% url 'login' %}">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ESTE É O BLOCO PRINCIPAL: Todo o conteúdo único de cada página entrará aqui -->
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Circuito Terê Verde — Desenvolvido com 💚 em Teresópolis</p>
+    </footer>
+
+</body>
+</html>

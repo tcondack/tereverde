@@ -1,0 +1,40 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Circuito Terê Verde — Ecoturismo em Teresópolis{% endblock %}
+
+{% block content %}
+<section class="intro container">
+    <h1>Bem-vindo ao Circuito Terê Verde</h1>
+    <p>
+       A geografia do território municipal de Teresópolis é caracterizada por terrenos montanhosos entremeados por vales. 
+A área urbana encontra-se em um planalto a 869 metros acima do nível do mar e é delimitada por três unidades de conservação: o Parque Nacional da Serra dos Órgãos, o Parque Estadual dos Três Picos e o Parque Natural Municipal Montanhas de Teresópolis. 
+A existência das unidades de conservação proporciona ao município o turismo ambiental, em especial de montanhismo, e também limitam o crescimento urbano.
+
+Teresópolis é um destino turístico popular, atraindo visitantes em busca de belezas naturais e atividades ao ar livre, como trilhas e escaladas. 
+A proposta do Circuito Terê Verde busca promover essas atrações, destacando a rica biodiversidade e as opções de ecoturismo disponíveis na região. 
+A plataforma “Terê Verde Online” permitirá que os visitantes tenham acesso a informações atualizadas sobre a biodiversidade, trilhas, cachoeiras e eventos que ocorrem nesses espaços protegidos.</p>
+        <p>O <strong>Circuito Terê Verde</strong> é um projeto voltado ao ecoturismo e à preservação ambiental
+        nos parques e reservas naturais de Teresópolis. Descubra trilhas incríveis, participe de eventos
+        e explore a natureza de forma sustentável.
+    </p>
+</section>
+
+<section class="destaques container">
+    <h2>Parques em destaque</h2>
+    <div class="cards-grid">
+        {% for parque in parques %}
+        <article class="card">
+            {% if parque.imagem %}
+            <img src="{{ parque.imagem.url }}" alt="{{ parque.nome }}">
+            {% endif %}
+            <h3>{{ parque.nome }}</h3>
+            <p>{{ parque.descricao|truncatewords:20 }}</p>
+        </article>
+        {% empty %}
+        <p>Nenhum parque cadastrado.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

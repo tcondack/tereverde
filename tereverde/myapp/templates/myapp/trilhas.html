@@ -1,0 +1,22 @@
+{% extends 'myapp/index.html' %}
+{% load static %}
+
+{% block title %}Trilhas - Circuito Terê Verde{% endblock %}
+
+{% block content %}
+    <section class="trilhas-list container">
+        <h2>Nossas trilhas</h2>
+        {% for trilha in trilhas %}
+        <div class="trilha-card">
+            <img src="{% if trilha.imagem %}{{ trilha.imagem.url }}{% else %}{% static 'trilha_default.png' %}{% endif %}" alt="Imagem da trilha {{ trilha.nome }}">
+            <h3>{{ trilha.nome }}</h3>
+            <p><strong>Parque:</strong> {{ trilha.parque.nome }}</p>
+            <p><strong>Dificuldade:</strong> {{ trilha.dificuldade }}</p>
+            <p><strong>Distância:</strong> {{ trilha.distancia }} km</p>
+            <p>{{ trilha.descricao }}</p>
+        </div>
+        {% empty %}
+        <p>Nenhuma trilha cadastrada.</p>
+        {% endfor %}
+    </section>
+{% endblock %}
