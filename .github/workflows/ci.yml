@@ -1,11 +1,10 @@
 name: tk Pipeline
 on:
   push:
-    branches:
-      - master
+    branches: [ "b" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "b" ]
+
 
 jobs:
   build:
