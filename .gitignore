@@ -1,0 +1,12 @@
+# Ambiente virtual
+venv/
+
+# Arquivos compilados
+*.pyc
+__pycache__/
+
+# Diretório de migrações
+myapp/migrations/
+
+# Configurações locais
+*.env
