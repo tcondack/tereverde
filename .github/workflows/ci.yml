@@ -32,7 +32,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd tereverde
         python -m venv faculdade
         pip install --upgrade pip
         source faculdade/bin/activate
