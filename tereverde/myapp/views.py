@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout
@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.contrib import messages
 from .models import Parque, Trilhas, Eventos
 from bson import ObjectId
-
+from .serializers import ParqueSerializer, TrilhasSerializer, EventosSerializer
 
 # Página de teste
 def teste(request):
@@ -22,8 +22,6 @@ def index(request):
 
     contexto = {
         'parques': parques,
-        'trilhas': trilhas,
-        'eventos': eventos
     }
 
     return render(request, 'myapp/index.html', contexto)
@@ -33,6 +31,10 @@ def parques(request):
     parques = Parque.objects.all()
     return render(request, 'myapp/parques.html', {'parques': parques})
 
+def parques_api(request):
+    parques  = Parque.objects.all()
+    serializer = ParqueSerializer(parques, many=True)
+    return JsonResponse(serializer.data, safe=False)
 
 def trilhas(request, parque_id=None):
     if parque_id:
@@ -41,6 +43,10 @@ def trilhas(request, parque_id=None):
         lista_trilhas = Trilhas.objects.all()
     return render(request, 'myapp/trilhas.html', {'parque': parques, 'trilhas': lista_trilhas})
 
+def trilhas_api(request):
+    trilhas  = Trilhas.objects.all()
+    serializer = TrilhasSerializer(trilhas, many=True)
+    return JsonResponse(serializer.data, safe=False)
 
 def eventos(request, parque_id=None):
     if parque_id:
@@ -48,6 +54,11 @@ def eventos(request, parque_id=None):
     else:
         eventos = Eventos.objects.all()
         return render(request, 'myapp/eventos.html', {'eventos': eventos})
+
+def eventos_api(request):
+    eventos  = Eventos.objects.all()
+    serializer = EventosSerializer(eventos, many=True)
+    return JsonResponse(serializer.data, safe=False)
 
 
 # Páginas de cadastro

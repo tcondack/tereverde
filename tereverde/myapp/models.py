@@ -1,14 +1,7 @@
 from django.db import models
-class Parque(models.Model):
-    nome =models.CharField(max_length=120)
-    descricao = models.TextField()
-    localizacao = models.TextField(max_length=200)
-    horario_funcionamento = models.CharField(max_length=100)
-    taxa_entrada = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-    imagem = models.ImageField(upload_to='parques/', null=True, blank=True)
-    ativo = models.BooleanField(default=True)
-    dia_semana = models.CharField(max_length=20,
-                                  choices=[
+from multiselectfield import MultiSelectField
+
+dia_semana = [
         ('Segunda-feira', 'Segunda-feira'),
         ('Terça-feira', 'Terça-feira'),
         ('Quarta-feira', 'Quarta-feira'),
@@ -16,7 +9,19 @@ class Parque(models.Model):
         ('Sexta-feira', 'Sexta-feira'),
         ('Sábado', 'Sábado'),
         ('Domingo', 'Domingo'),
-        ])
+        ]
+
+class Parque(models.Model):
+    nome =models.CharField(max_length=120)
+    descricao = models.TextField()
+    localizacao = models.TextField()
+    horario_funcionamento = models.CharField(max_length=100)
+    taxa_entrada = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    imagem = models.ImageField(upload_to='parques/', null=True, blank=True)
+    dias_aberto = MultiSelectField(
+    choices=dia_semana,
+    default=[],
+    blank=True)
     ativo = models.BooleanField(default=True)
     def __str__(self):
         return self.nome
