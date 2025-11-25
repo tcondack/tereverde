@@ -53,9 +53,9 @@ jobs:
         
     - name: Run tests
       run: |
-      source faculdade/bin/activate
-      cd tereverde
-      python manage.py test
+        source faculdade/bin/activate
+        cd tereverde
+        python manage.py test
         
 
     
