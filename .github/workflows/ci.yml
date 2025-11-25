@@ -47,12 +47,12 @@ jobs:
 
     - name: Run migrations
       run: |
-        cd tereverde
         source faculdade/bin/activate
+        cd tereverde
         python manage.py migrate
-      
+
     - name: Run tests
       run: |
-        cd tereverde
         source faculdade/bin/activate
+        cd tereverde
         python manage.py test
