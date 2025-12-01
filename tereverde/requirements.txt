@@ -1,7 +1,6 @@
 Django
 djongo
 djangorestframework
-pytest-django
 pytz
 Pillow
 django-multiselectfield
