@@ -56,7 +56,7 @@ instalação do python
 
 Clonar github
 
-https://github.com/tcondack/mvpbackend
+https://github.com/tcondack/tereverde
 
 Instalar dependencias 
 
