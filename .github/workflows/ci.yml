@@ -1,50 +1,61 @@
-name: tk Pipeline
+name: tkpipeline CI
+
 on:
   push:
-    branches:
-      - master
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     services:
-      mongodb:
-        image: mongo:5
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: tereverde
+          POSTGRES_USER: tereuser
+          POSTGRES_PASSWORD: 1234
         ports:
-          - 27017:27017
+          - 5432:5432
         options: >-
-          --health-cmd "mongo --eval 'db.runCommand({ ping: 1 })'"
+          --health-cmd "pg_isready -U tereuser -d tereverde"
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 3
+          --health-retries 5
+
+    env:
+      DATABASE_NAME: tereverde
+      DATABASE_USER: tereuser
+      DATABASE_PASSWORD: 1234
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
+      DEBUG: False
+      SECRET_KEY: "fake-secret-key-for-ci"
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.13'
+        python-version: "3.12"
 
     - name: Install dependencies
       run: |
         python -m venv faculdade
-        pip install --upgrade pip
         source faculdade/bin/activate
+        pip install --upgrade pip
         pip install -r requirements.txt
-        
-    - name: Wait for MongoDB to be ready
+
+    - name: Wait for PostgreSQL to be ready
       run: |
-        for i in {1..15}; do
-          nc -z localhost 27017 && echo "MongoDB is up!" && break
-          echo "Waiting for MongoDB..."
-          sleep 3
-        done        
+        until pg_isready -h localhost -p 5432 -U tereuser; do
+          echo "⏳ Waiting for DB..."
+          sleep 2
+        done
 
     - name: Run migrations
       run: |
@@ -55,4 +66,5 @@ jobs:
       run: |
         source faculdade/bin/activate
         python manage.py test
+
     
