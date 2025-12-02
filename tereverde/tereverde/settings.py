@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'djongo',
     'myapp',
 ]
 
@@ -76,10 +75,15 @@ WSGI_APPLICATION = 'tereverde.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+DJONGO_SQL_DECODE_ERRORS = False
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'tereverde',
+        'USER': 'tereuser',
+        'PASSWORD': 'senha123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
