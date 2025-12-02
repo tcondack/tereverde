@@ -1,0 +1,9 @@
+django
+sqlparse
+djangorestframework
+pymongo
+bson
+pytz
+Pillow
+django-multiselectfield
+psycopg2-binary

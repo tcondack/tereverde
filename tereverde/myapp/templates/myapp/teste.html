@@ -1,0 +1,54 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuito Terê Verde</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script src="{% static 'index.js' %}" type="text/javascript"></script>
+</head>
+<body>
+    <header class="hero">
+        <div class="overlay"></div>
+        <h1>CIRCUITO TERÊ VERDE</h1>
+        <nav aria-label="Menu principal">
+            <a href="{% url 'parques' %}">Parques</a>
+            <a href="{% url 'trilhas' %}">Trilhas</a>
+            <a href="{% url 'eventos' %}">Eventos</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="welcome container">
+            <h2>Bem-vindo ao ecoturismo de Teresópolis</h2>
+            <p>Explore trilhas, descubra a biodiversidade e participe de eventos nos parques da região.</p>
+        </section>
+
+        <section class="featured-parks container">
+            <h3>Parques em destaque</h3>
+            <div class="park-list">
+                {% for parque in parques %}
+                <article class="park-card">
+                    {%if parque.imagem %}
+                        <img src="{{ parque.imagem.url }}"alt="Imagem do parque {{ parque.nome }}">
+                    {% endif %}
+                        <h4>{{ parque.nome }}</h4>
+                    <p>{{ parque.descricao }}</p>
+                    <p><strong>Localização:</strong> {{ parque.localizacao }}</p>
+                </article>
+                {% empty %}
+                <p>Nenhum parque cadastrado ainda.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Circuito Terê Verde — Desenvolvido com 💚 em Teresópolis</p>
+    </footer>
+
+</body>
+</html>
