@@ -1,10 +1,11 @@
 name: tk Pipeline
 on:
   push:
-    branches: [ "b" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "b" ]
-
+    branches:
+      - master
 
 jobs:
   build:
@@ -35,7 +36,7 @@ jobs:
         python -m venv faculdade
         pip install --upgrade pip
         source faculdade/bin/activate
-        pip install -r tereverde/requirements.txt
+        pip install -r requirements.txt
         
     - name: Wait for MongoDB to be ready
       run: |
@@ -48,14 +49,10 @@ jobs:
     - name: Run migrations
       run: |
         source faculdade/bin/activate
-        cd tereverde
         python manage.py migrate
-        
+
     - name: Run tests
       run: |
         source faculdade/bin/activate
-        cd tereverde
         python manage.py test
-        
-
     
