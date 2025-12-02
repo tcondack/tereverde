@@ -22,7 +22,7 @@ Parques da cidade de Teresópolis, para dar enfoque nas suas belezas naturais, d
 
 ## Tecnologias Utilizadas
 - **Django**
-- **MongoDB**
+- **PostgreSQL**
 - **HTML**
 - **CSS**
 - **JAVASCRIPT**
