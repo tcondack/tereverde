@@ -8,8 +8,8 @@
 - [Público-alvo](#público-alvo)
 - [Os possíveis atores envolvidos](#os-possíveis-atores-envolvidos)
 - [Para este MVP foram escolhidas as prioridades](#prioridades)
-- [## A ser implemtentado](#a-ser-implementado)
-- [Execução do projeto](#Execução-do-Projeto)
+- [A ser implementado](#a-ser-implementado)
+- [Execução do Projeto](#Execução-do-Projeto)
 
 ## Aluno
 - TIAGO EVARISTO CONDACK	
@@ -52,8 +52,8 @@ Todos que possuem interesse no ecoturismo, desde moradores da cidade a turistas 
 - Criação da lógica de dados do site
 
 
+## A ser implementado
 
-## A ser implemtentado
 - Melhoria de interface
 - criação de usuários
 - gestão de comentários dos usuários
@@ -64,16 +64,10 @@ Todos que possuem interesse no ecoturismo, desde moradores da cidade a turistas 
 
 ## Execução do Projeto
 
-instalação do python
-
-Clonar github
-
-https://github.com/tcondack/tereverde
-
-Instalar dependencias 
-
-pip install -r requirements.txt
-
-rodar servidor
-
-python manage.py runserver
+- instalação do python
+- Clonar github
+    https://github.com/tcondack/tereverde
+- Instalar dependencias 
+- pip install -r requirements.txt
+- rodar servidor
+    python manage.py runserver
