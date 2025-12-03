@@ -44,7 +44,7 @@ jobs:
         python-version: "3.12"
 
     - name: Install dependencies
-    working-directory: tereverde 
+      working-directory: tereverde 
       run: |
         python -m venv faculdade
         source faculdade/bin/activate
