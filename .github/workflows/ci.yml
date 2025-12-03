@@ -44,10 +44,9 @@ jobs:
         python-version: "3.12"
 
     - name: Install dependencies
+    working-directory: tereverde 
       run: |
-        cd $GITHUB_WORKSPACE 
         python -m venv faculdade
-        pip install --upgrade pip
         source faculdade/bin/activate
         pip install --upgrade pip
         pip install -r requirements.txt
