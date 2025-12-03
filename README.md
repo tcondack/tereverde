@@ -7,7 +7,8 @@
 - [Objetivos](#objetivos)
 - [Público-alvo](#público-alvo)
 - [Os possíveis atores envolvidos](#os-possíveis-atores-envolvidos)
-- [Protótipos](#protótipos)
+- [Para este MVP foram escolhidas as prioridades](#prioridades)
+- [A ser implementado em um segundo momento](#a-ser-implementado)
 - [Execução do projeto](#Execução-do-Projeto)
 
 ## Aluno
@@ -44,11 +45,22 @@ Todos que possuem interesse no ecoturismo, desde moradores da cidade a turistas 
 - Usuários que terão acesso aos dados disponibilizados pela plataforma.
 
 
-## Protótipos
->>> a ser implementado
->>>
->>> 
+## Para este MVP foram escolhidas as prioridades
 
+- Criação das funcionalidades administrativas
+- Criação de uma inteface básica para entendimento
+- Criação da lógica de dados do site
+
+
+
+## A ser implemtentado
+- Melhoria de interface
+- criação de usuários
+- gestão de comentários dos usuários
+- melhor adequação da LGPD
+- adequação ao actions
+- rodar em um servidor web
+- criação de testes de execução
 
 ## Execução do Projeto
 
