@@ -66,11 +66,13 @@ jobs:
         DATABASE_PASSWORD: ${{ env.DATABASE_PASSWORD }}
         DATABASE_HOST: ${{ env.DATABASE_HOST }}
         DATABASE_PORT: ${{ env.DATABASE_PORT }}
+        working-directory: tereverde
       run: |
         source faculdade/bin/activate
         python manage.py migrate
 
     - name: Run tests
+      working-directory: tereverde
       run: |
         source faculdade/bin/activate
         python manage.py test
