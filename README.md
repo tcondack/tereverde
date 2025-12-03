@@ -8,7 +8,7 @@
 - [Público-alvo](#público-alvo)
 - [Os possíveis atores envolvidos](#os-possíveis-atores-envolvidos)
 - [Para este MVP foram escolhidas as prioridades](#prioridades)
-- [A ser implementado em um segundo momento](#a-ser-implementado)
+- [## A ser implemtentado](#a-ser-implementado)
 - [Execução do projeto](#Execução-do-Projeto)
 
 ## Aluno
