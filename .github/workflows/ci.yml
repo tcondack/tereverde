@@ -44,7 +44,7 @@ jobs:
         python-version: "3.12"
 
     - name: Install dependencies
-      working-directory: tereverde 
+      working-directory: .
       run: |
         pip install --upgrade pip
         pip install -r requirements.txt
@@ -64,11 +64,11 @@ jobs:
         DATABASE_PASSWORD: ${{ env.DATABASE_PASSWORD }}
         DATABASE_HOST: ${{ env.DATABASE_HOST }}
         DATABASE_PORT: ${{ env.DATABASE_PORT }}
-        working-directory: tereverde
+        working-directory: .
       run: |
         python manage.py migrate
 
     - name: Run tests
-      working-directory: tereverde
+      working-directory: .
       run: |
         python manage.py test
