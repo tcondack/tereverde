@@ -136,3 +136,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# SESSION AGE 5 Minutes
+SESSION_COOKIE_AGE = 300  # 5 minutes in seconds
+LOGIN_URL = '/authlogin/'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
