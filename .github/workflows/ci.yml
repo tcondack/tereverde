@@ -46,8 +46,6 @@ jobs:
     - name: Install dependencies
       working-directory: tereverde 
       run: |
-        python -m venv faculdade
-        source faculdade/bin/activate
         pip install --upgrade pip
         pip install -r requirements.txt
         
@@ -68,11 +66,9 @@ jobs:
         DATABASE_PORT: ${{ env.DATABASE_PORT }}
         working-directory: tereverde
       run: |
-        source faculdade/bin/activate
         python manage.py migrate
 
     - name: Run tests
       working-directory: tereverde
       run: |
-        source faculdade/bin/activate
         python manage.py test
