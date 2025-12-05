@@ -12,3 +12,20 @@ class ParqueModelTest(TestCase):
 
         )
 
+class TrilhasModelTest(TestCase):
+	def setUp(self):
+		self.trilha = Trilhas.objects.create(
+		nome="trilha teste",
+		localizacao ="teresópolis",
+		horario_funcionamento="08:00",
+	)
+
+class EventosModelTest(TestCase):
+	def setUp(self):
+		self.eventos = Eventos.object.create(
+		nome="FEsta no parque",
+		decricao="Sejam todos bem-vindos ao nosso parque...",
+		data_inicio="15-12-2025",
+		data_fim="19-12-2025",
+	)
+
