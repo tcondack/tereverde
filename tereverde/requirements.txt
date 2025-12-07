@@ -1,8 +1,6 @@
 django
 sqlparse
 djangorestframework
-pymongo
-bson
 pytz
 Pillow
 django-multiselectfield

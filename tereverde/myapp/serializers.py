@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Parque, Trilhas, Eventos
+from .models import Parque, Trilhas, Eventos, Novidades
 
 class ParqueSerializer(serializers.ModelSerializer):
   """ Serializer para o modelo Parque"""
@@ -18,3 +18,11 @@ class EventosSerializer(serializers.ModelSerializer):
   class Meta:
     model = Eventos
     fields = '__all__'
+
+class NovidadesSerializer(serializers.ModelSerializer):
+  """ Serializer para o modelo Novidades"""
+  class Meta:
+    model = Novidades
+    fields = '__all__'
+
+    
