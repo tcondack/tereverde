@@ -19,19 +19,56 @@ def teste(request):
 
 # Páginas públicas
 
+
+## Parques 
 def index(request):
     parques = Parque.objects.all()[:3]  # Mostra os 3 primeiros parques
-
     contexto = {
         'parques': parques,
     }
-
     return render(request, 'myapp/index.html', contexto)
-
 
 def parques(request):
     parques = Parque.objects.all()
     return render(request, 'myapp/parques.html', {'parques': parques})
+
+def parque_create(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        descricao = request.POST.get('descricao')
+        localizacao = request.POST.get('localizacao')
+        horario_funcionamento = request.POST.get('horario_funcionamento')
+        ativo = request.POST.get('ativo') == 'on'  # Checkbox handling
+
+        parque = Parque.objects.create(
+            nome=nome,
+            descricao=descricao,
+            localizacao=localizacao,
+            horario_funcionamento=horario_funcionamento,
+            ativo=ativo
+        )
+        return redirect('parques')  # redireciona para a lista de parques depos de criar
+    return render(request, 'myapp/parque_create.html')
+
+def parque_update(request, parque_id):
+    parque = get_object_or_404(Parque, id=parque_id)
+    if request.method == 'POST':
+        parque.nome = request.POST.get('nome')
+        parque.descricao = request.POST.get('descricao')
+        parque.localizacao = request.POST.get('localizacao')
+        parque.horario_funcionamento = request.POST.get('horario_funcionamento')
+        parque.ativo = request.POST.get('ativo') == 'on'  # Checkbox handling
+        parque.save()
+        return redirect('parques')  # redireciona para a lista de parques depois de atualizar
+    return render(request, 'myapp/parque_update.html', {'parque': parque})
+
+def parque_delete(request, parque_id):
+    parque = get_object_or_404(Parque, id=parque_id)
+    if request.method == 'POST':
+        parque.delete()
+        return redirect('parques')  # redireciona para a lista de parques depois de deletar
+    return render(request, 'myapp/parque_delete.html', {'parque': parque})
+
 
 @api_view(['GET'])
 def parques_api(request):
@@ -39,12 +76,16 @@ def parques_api(request):
     serializer = ParqueSerializer(parques, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+## Trilhas
+
 def trilhas(request, parque_id=None):
     if parque_id:
         trilhas = Trilhas.objects.filter(parque_id=int(parque_id))
     else:
         lista_trilhas = Trilhas.objects.all()
     return render(request, 'myapp/trilhas.html', {'parque': parques, 'trilhas': lista_trilhas})
+
 
 @api_view(['GET'])
 def trilhas_api(request):
